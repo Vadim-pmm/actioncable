@@ -1,10 +1,4 @@
-class ChatroomsController < ApplicationController
-
-  def show
-    @chatroom = Chatroom.find_by(slug: params[:slug])
-    @message = Message.new
-  end
-
+class MessagesController < ApplicationController
   def create
     message = Message.new(message_params)
     message.user = current_user
@@ -17,5 +11,4 @@ class ChatroomsController < ApplicationController
   def message_params
     params.require(:message).permit(:content, :chatroom_id)
   end
-
 end

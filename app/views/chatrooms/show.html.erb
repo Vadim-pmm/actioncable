@@ -1,2 +1,19 @@
-<h1>Chatrooms#show</h1>
-<p>Find me in app/views/chatrooms/show.html.erb</p>
+<div>
+  <% unless @chatroom.nil? %>
+    <h1><%= @chatroom.topic %></h1>
+
+    <div>
+      <% if @chatroom.messages.any? %>
+          <div id="messages">
+            <%= render partial: 'messages/message', collection: @chatroom.messages%>
+          </div>
+      <% else %>
+          <div id="messages">
+          </div>
+      <% end %>
+    </div>
+
+    <%= render partial: 'messages/one_message', locals: {message: @message, chatroom: @chatroom}%>
+  <% end %>
+
+</div>
