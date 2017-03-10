@@ -1,2 +1,11 @@
-// Place all the behaviors and hooks related to the matching controller here.
-// All this logic will automatically be available in application.js.
+App.messages = App.cable.subscriptions.create('MessagesChannel', {
+    received: function(data) {
+        $("#messages").removeClass('hidden')
+        return $('#messages').append(this.renderMessage(data));
+    },
+
+    renderMessage: function(data) {
+        return "<p> <b>" + data.user + ": </b>" + data.message + "</p>";
+    }
+}
+);
