@@ -1,4 +1,5 @@
 class ChatroomsController < ApplicationController
+  before_filter :authenticate_user!
 
   def show
     @chatroom = Chatroom.find_by(slug: params[:slug])

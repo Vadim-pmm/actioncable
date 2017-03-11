@@ -3,7 +3,11 @@ class MessagesController < ApplicationController
     message = Message.new(message_params)
     message.user = current_user
     if message.save
-      ActionCable.server.broadcast(:messages, message: message.content, user: message.user.email)
+      # первый параметр - указание "подканала"
+      # второй, третий, ... - это по-сути хэш, который залетит в параметр data
+      # (см. messages.js - обработчик клиентской части)
+      ActionCable.server.broadcast("messages:#{current_user.id}",
+                                   message: message.content, user: message.user.email)
       head :ok
     end
   end
