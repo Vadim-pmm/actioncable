@@ -3,7 +3,7 @@ class MessagesController < ApplicationController
     message = Message.new(message_params)
     message.user = current_user
     if message.save
-      # первый параметр - указание "подканала"
+      # первый параметр - указание "подканала" в который выталкивается сообщение
       # второй, третий, ... - это по-сути хэш, который залетит в параметр data
       # (см. messages.js - обработчик клиентской части)
       ActionCable.server.broadcast("messages:#{current_user.id}",

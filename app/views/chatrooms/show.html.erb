@@ -5,7 +5,7 @@
     <div>
       <% if @chatroom.messages.any? %>
           <div id="messages">
-            <%= render partial: 'messages/one_message', collection: @chatroom.messages%>
+            <%= render partial: 'messages/message', collection: @chatroom.messages %>
           </div>
       <% else %>
           <div id="messages">
@@ -13,7 +13,7 @@
       <% end %>
     </div>
 
-    <%= render 'messages/message_form' %>
+    <%= render partial: 'messages/message_form', locals: {message: @message, chatroom: @chatroom} %>
   <% end %>
 
 </div>

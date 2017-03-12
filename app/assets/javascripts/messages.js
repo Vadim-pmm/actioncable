@@ -15,8 +15,5 @@ App.messages = App.cable.subscriptions.create('MessagesChannel', {
         return "<p> <b>" + data.user + ": </b>" + data.message + "</p>";
     }
 
-    // received: function(data) {
-    //     $('#notifications').prepend("<p>" + data.message + "</p>")
-    // }
 }
 );

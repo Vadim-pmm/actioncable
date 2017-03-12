@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'chatrooms#show'
+  root 'chatrooms#index'
   #root 'welcome#about'
 
   devise_for :users
